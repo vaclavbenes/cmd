@@ -1,4 +1,4 @@
-# Deno cmd
+# Deno cmd 🦖
 
 Write simple shell command like a string
 
