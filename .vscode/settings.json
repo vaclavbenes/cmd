@@ -1,0 +1,7 @@
+{
+    "deno.enable": true,
+    "code-runner.executorMap": {
+        "typescript": "deno run -A -c $workspaceRoot/tsconfig.json $fileName",
+    },
+    "code-runner.runInTerminal": true,
+}
