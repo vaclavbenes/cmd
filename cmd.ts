@@ -12,13 +12,16 @@ function remove_multiple_whitespace(value: string): string[] {
 /** Write simple shell command like a string
  *
  *      cmd("ls .")
- *      const out = cmd("ls .", "piped","piped")
- *      console.log(out)
  *
  * Write like a script line by line with await
  *
- *      await cmd("ls .")
- * */
+ *      const { code } = await cmd("ls .");
+ *      console.log(code);
+ *
+ *      const { code, stdout, stderr } = await cmd("ls .", "piped", "piped");
+ *      console.log(code);
+ *
+ **/
 export async function cmd(value: string, stdout?: stdout, stderr?: stdout) {
   const removed = remove_multiple_whitespace(value);
 
@@ -30,6 +33,12 @@ export async function cmd(value: string, stdout?: stdout, stderr?: stdout) {
 
   if (stdout === "piped" && stderr === "piped") {
     const out = await p.output();
-    return decode(out);
+    const err = await p.stderrOutput();
+    return { code, stdout: decode(out), stderr: decode(err) };
   }
+
+  return { code };
 }
+
+const { code, stdout, stderr } = await cmd("ls .", "piped", "piped");
+console.log(code);
