@@ -39,6 +39,3 @@ export async function cmd(value: string, stdout?: stdout, stderr?: stdout) {
 
   return { code };
 }
-
-const { code, stdout, stderr } = await cmd("ls .", "piped", "piped");
-console.log(code);
