@@ -14,6 +14,12 @@ ls .
 cmd("ls .")
  ```
 
+Load script
+```typescript
+import { cmd } from "https://raw.githubusercontent.com/vaclavbenes/cmd/master/mod.ts";
+
+```
+
  Write like a script line by line with await
 
 ```typescript
