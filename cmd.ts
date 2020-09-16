@@ -21,7 +21,7 @@ function validate_quotes(values: string[]): string[] {
     if (flag) {
       quoted_string +=  " " + value.replace('"','')
     } else {
-      ignored_quote_list.push(value)
+      ignored_quote_list.push(value.replaceAll("'",""))
     }
   }
 
